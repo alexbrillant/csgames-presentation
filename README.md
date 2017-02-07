@@ -4,7 +4,7 @@ My first code talk ever.
 
 It is a seminar for the cs games 2017 ulaval delegation :  http://csgames.org/corpo/fr/ 
 
-# ExemLive coded exemples
+# Live coded exemples
 - React component
 - Redux Reducer
 - Redux Saga
