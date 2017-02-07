@@ -1,5 +1,16 @@
-#  CsGames
+# React and Redux seminar
+
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
+
+My first code talk ever. 
+
+It is a seminar for the cs games 2017 ulaval delegation :  http://csgames.org/corpo/fr/ 
+
+# Live coding
+- React component
+- Redux Reducer
+- Redux Saga
+- Layout Animation 
 
 * Standard compliant React Native App Utilizing [Ignite](https://github.com/infinitered/ignite)
 
@@ -10,7 +21,6 @@
 **Step 2:** cd to the cloned repo:
 
 **Step 3:** Install the Application with `npm install`
-
 
 ## :arrow_forward: How to Run App
 
@@ -38,27 +48,3 @@ If you have to bypass lint for a special commit that you will come back and clea
 **Understanding Linting Errors**
 
 The linting rules are from JS Standard and React-Standard.  [Regular JS errors can be found with descriptions here](http://eslint.org/docs/rules/), while [React errors and descriptions can be found here](https://github.com/yannickcr/eslint-plugin-react).
-
-## :closed_lock_with_key: Secrets
-
-This project uses [react-native-config](https://github.com/luggit/react-native-config) to expose config variables to your javascript code in React Native. You can store API keys
-and other sensitive information in a `.env` file:
-
-```
-API_URL=https://myapi.com
-GOOGLE_MAPS_API_KEY=abcdefgh
-```
-
-and access them from React Native like so:
-
-```
-import Secrets from 'react-native-config'
-
-Secrets.API_URL  // 'https://myapi.com'
-Secrets.GOOGLE_MAPS_API_KEY  // 'abcdefgh'
-```
-
-The `.env` file is ignored by git keeping those secrets out of your repo.
-
-## :open_file_folder: Related Articles
-Ignite Documentation - [Ignite Wiki https://github.com/infinitered/ignite/wiki](https://github.com/infinitered/ignite/wiki)
