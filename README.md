@@ -31,4 +31,4 @@ It is a seminar for the cs games 2017 ulaval delegation :  http://csgames.org/co
 ## :no_entry_sign: Standard Compliant
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-This project adheres to Standard.  Our CI enforces this, so we suggest you enable linting to keep your project compliant during development.
+This project adheres to Standard.
