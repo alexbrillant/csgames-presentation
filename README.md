@@ -6,11 +6,7 @@ My first code talk ever.
 
 It is a seminar for the cs games 2017 ulaval delegation :  http://csgames.org/corpo/fr/ 
 
-# Live coding
-- React component
-- Redux Reducer
-- Redux Saga
-- Layout Animation 
+![App preview](/Preview.png?raw=true)
 
 * Standard compliant React Native App Utilizing [Ignite](https://github.com/infinitered/ignite)
 
