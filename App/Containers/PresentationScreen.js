@@ -40,7 +40,7 @@ export default class PresentationScreen extends React.Component {
             Redux Saga
           </RoundedButton>
 
-          <RoundedButton onPress={NavigationActions.theme}>
+          <RoundedButton onPress={NavigationActions.layoutAnimation}>
             Layout Animation
           </RoundedButton>
 

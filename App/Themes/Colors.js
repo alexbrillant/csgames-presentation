@@ -23,7 +23,11 @@ const colors = {
   pacificBlue: '#1DA6C0',
   graniteGrey: '#666666',
   steelBlue: '#387EA8',
-  antiFlashWhite: '#EAEDF1'
+  antiFlashWhite: '#EAEDF1',
+  iceberg: '#69C1D3',
+  goldenRod: '#DFA11F',
+  ruby: '#D6145F',
+  mint: '#3BB18B'
 }
 
 export default colors
