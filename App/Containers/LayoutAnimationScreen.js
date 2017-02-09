@@ -8,8 +8,8 @@ import { Colors, Images } from '../Themes'
 
 // Styles
 import styles from './Styles/LayoutAnimationScreenStyle'
-const CIRCLE_SIZE = 25
-const INITIAL_MARGIN_VALUE = 25
+const CIRCLE_SIZE = 35
+const INITIAL_MARGIN_VALUE = 35
 const MARGIN_AND_SPIN_DURATION = 800
 const SIZE_DURATION = 400
 
