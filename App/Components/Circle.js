@@ -1,32 +1,38 @@
 // @flow
 
 import React from 'react'
-import { View, Animated, Text } from 'react-native'
-import styles from './Styles/CircleStyle'
-import { Colors } from '../Themes'
+import { Animated } from 'react-native'
 
-export default class Circle extends React.Component {
+class Circle extends React.Component {
 
   render () {
+    const { marginTop, absolute, marginBottom, marginLeft, marginRight, size, color } = this.props
     return (
       <Animated.View style={{
-        backgroundColor: this.props.color,
-        margin: this.props.margin,
-        width: this.props.size,
-        height: this.props.size,
+        marginTop: marginTop,
+        marginBottom: marginBottom,
+        marginLeft: marginLeft,
+        marginRight: marginRight,
+        backgroundColor: color,
+        position: absolute ? 'absolute' : 'relative',
+        width: size,
+        height: size,
         borderRadius: this.props.size / 2
       }} />
     )
   }
 }
 
-// // Prop type warnings
-// Circle.propTypes = {
-//   someProperty: React.PropTypes.object,
-//   someSetting: React.PropTypes.bool.isRequired
-// }
-//
-// // Defaults for props
-// Circle.defaultProps = {
-//   someSetting: false
-// }
+Circle.defaultProps = {
+  marginTop: 0,
+  marginLeft: 0,
+  marginRight: 0,
+  marginBottom: 0,
+  absolute: false
+}
+
+Circle.propTypes = {
+  size: React.PropTypes.number.isRequired
+}
+
+export default Circle

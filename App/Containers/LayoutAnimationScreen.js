@@ -1,115 +1,110 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Easing, Animated, LayouAnimation, View, Image } from 'react-native'
-import { connect } from 'react-redux'
+import { ScrollView, Easing, Animated, View, Image } from 'react-native'
 import RoundedButton from '../Components/RoundedButton'
 import Circle from '../Components/Circle'
 import { Colors, Images } from '../Themes'
 
 // Styles
 import styles from './Styles/LayoutAnimationScreenStyle'
+const CIRCLE_SIZE = 25
+const INITIAL_MARGIN_VALUE = 25
+const MARGIN_AND_SPIN_DURATION = 800
+const SIZE_DURATION = 400
 
 class LayoutAnimationScreen extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {
-      animationValue1: new Animated.Value(0),
-      animationValue2: new Animated.Value(0)
-    }
-    this.interpolateRotation.bind(this)
-  }
-
-  componentWillUpdate (nextProps, nextState) {
-    LayouAnimation.easeInEaseOut()
-  }
-
-  onPressStart = () => {
-    this.animate()
-  }
-
-  animate = () => {
-    Animated.sequence([
-      this.animateSpinAndMargin(1, Easing.cubic),
-      this.animateSpinAndMargin(0.2, Easing.elastic(1))
-    ]).start()
-  }
-
-  animateSpinAndMargin (animationToValue, easing) {
-    return Animated.timing(
-      this.state.animationValue1, {
-        toValue: animationToValue,
-        duration: 800,
-        easing: easing
-      }
-    )
-  }
-
-  animateSize (animationToValue, easing) {
-    return Animated.timing(
-      this.state.animationValue2, {
-        toValue: animationToValue,
-        duration: 500,
-        easing: easing
-      }
-    )
-  }
-
-  interpolateRotation () {
-    return this.state.animationValue1.interpolate({
+    this.animate = this.animate.bind(this)
+    this.state = {}
+    this.state.animation1 = new Animated.Value(0)
+    this.state.animation2 = new Animated.Value(0)
+    this.state.marginValue = this.state.animation1.interpolate({
+      inputRange: [0, 1],
+      outputRange: [INITIAL_MARGIN_VALUE, 0]
+    })
+    this.state.spinValue = this.state.animation1.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '360deg']
     })
-  }
-
-  interpolateMargin () {
-    return this.state.animationValue1.interpolate({
+    this.state.sizeValue = this.state.animation2.interpolate({
       inputRange: [0, 1],
-      outputRange: [30, 0]
+      outputRange: [CIRCLE_SIZE, CIRCLE_SIZE * 6]
     })
   }
 
+  animate () {
+    Animated.sequence([
+      Animated.timing(
+        this.state.animation1, {
+          toValue: 1,
+          duration: MARGIN_AND_SPIN_DURATION,
+          easing: Easing.cubic
+        }
+      ),
+      Animated.timing(
+        this.state.animation1, {
+          toValue: 0,
+          duration: MARGIN_AND_SPIN_DURATION,
+          easing: Easing.elastic(1)
+        }
+      ),
+      Animated.timing(
+        this.state.animation2, {
+          toValue: 1,
+          duration: SIZE_DURATION,
+          easing: Easing.linear
+        }
+      )
+    ]).start()
+  }
+
   render () {
-    const spin = this.interpolateRotation()
-    const margin = this.interpolateMargin()
+    const { marginValue, spinValue } = this.state
     return (
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <ScrollView style={styles.container}>
           <Animated.View
-            style={{
-              flex: 1,
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transform: [{rotate: spin}]
-            }}>
-            <View style={{flex: 1, flexDirection: 'row'}}>
-              <Circle margin={margin} size={17} color={Colors.iceberg} />
-              <Circle margin={margin} size={17} color={Colors.goldenRod} />
+            style={[styles.animationContainer, {
+              transform: [{
+                rotate: spinValue
+              }]
+            }]}>
+            <View style={[styles.row]}>
+              <Circle
+                marginBottom={marginValue}
+                marginRight={marginValue}
+                size={CIRCLE_SIZE}
+                color={Colors.iceberg} />
+              <Circle
+                marginBottom={marginValue}
+                marginLeft={marginValue} size={CIRCLE_SIZE}
+                color={Colors.goldenRod} />
             </View>
-            <View style={{flex: 1, flexDirection: 'row'}}>
-              <Circle margin={margin} size={17} color={Colors.mint} />
-              <Circle margin={margin} size={17} color={Colors.ruby} />
+            <View style={[styles.row]}>
+              <Circle
+                marginTop={marginValue}
+                marginRight={marginValue}
+                size={CIRCLE_SIZE}
+                color={Colors.mint} />
+              <Circle
+                marginTop={marginValue}
+                marginLeft={marginValue}
+                size={CIRCLE_SIZE}
+                color={Colors.ruby} />
             </View>
           </Animated.View>
         </ScrollView>
-        <View style={{position: 'absolute', left: 0, right: 0, bottom: 0}}>
-            <RoundedButton onPress={this.onPressStart}>
-              Start Animation
-            </RoundedButton>
-          </View>
+        <View style={styles.startButton}>
+          <RoundedButton onPress={this.animate}>
+            Start Animation
+          </RoundedButton>
+        </View>
       </View>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {}
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return{}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(LayoutAnimationScreen)
+export default LayoutAnimationScreen
