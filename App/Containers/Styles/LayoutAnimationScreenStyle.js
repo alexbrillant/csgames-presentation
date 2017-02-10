@@ -1,9 +1,8 @@
 // @flow
 
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { ApplicationStyles } from '../../Themes/'
 import { Metrics } from '../../Themes'
-var { height } = Dimensions.get('window')
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
