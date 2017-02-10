@@ -36,7 +36,7 @@ class ListViewAuthors extends React.Component {
         <Text style={styles.sectionText} >
           Implémentez et testez le reducer incrementQuoteIndex dans Redux/QuotesRedux.js{'\n'}{'\n'}
           Attacher ce reducer au bon endroit dans cet écran(Containers/ListViewAuthor.js).{'\n'}{'\n'}
-          Ensuite, passez l'action du reducer au callback de votre component et faites une transition vers un nouvel écran pour faire défiler les citations des auteurs. Vous pouvez utiliser les selectors existants.
+          Ensuite, passez l'action du reducer, la couleur, et le nom de au component de l'exemple précédant.{'\n'}{'\n'} Dans un nouvel écran(ignite generate containers QuoteScreen.js), faites défiler les citations de l'auteur sélectionné.
         </Text>
       </View>
     )
