@@ -1,17 +1,16 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Easing, Animated, View, Image } from 'react-native'
+import { ScrollView, Easing, Animated, View, Image, Text } from 'react-native'
 import RoundedButton from '../Components/RoundedButton'
-import Circle from '../Components/Circle'
-import { Colors, Images } from '../Themes'
+import CirclesSquare from '../Components/CirclesSquare'
+import { Images } from '../Themes'
 
 // Styles
 import styles from './Styles/LayoutAnimationScreenStyle'
 const CIRCLE_SIZE = 35
-const INITIAL_MARGIN_VALUE = 35
+const INITIAL_SQUARE_SIZE = 50
 const MARGIN_AND_SPIN_DURATION = 800
-const SIZE_DURATION = 400
 
 class LayoutAnimationScreen extends React.Component {
   constructor (props) {
@@ -19,18 +18,13 @@ class LayoutAnimationScreen extends React.Component {
     this.animate = this.animate.bind(this)
     this.state = {}
     this.state.animation1 = new Animated.Value(0)
-    this.state.animation2 = new Animated.Value(0)
-    this.state.marginValue = this.state.animation1.interpolate({
+    this.state.squareSize = this.state.animation1.interpolate({
       inputRange: [0, 1],
-      outputRange: [INITIAL_MARGIN_VALUE, 0]
+      outputRange: [INITIAL_SQUARE_SIZE, 0]
     })
-    this.state.spinValue = this.state.animation1.interpolate({
+    this.state.spin = this.state.animation1.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '360deg']
-    })
-    this.state.sizeValue = this.state.animation2.interpolate({
-      inputRange: [0, 1],
-      outputRange: [CIRCLE_SIZE, CIRCLE_SIZE * 6]
     })
   }
 
@@ -49,52 +43,28 @@ class LayoutAnimationScreen extends React.Component {
           duration: MARGIN_AND_SPIN_DURATION,
           easing: Easing.elastic(1)
         }
-      ),
-      Animated.timing(
-        this.state.animation2, {
-          toValue: 1,
-          duration: SIZE_DURATION,
-          easing: Easing.linear
-        }
       )
     ]).start()
   }
 
   render () {
-    const { marginValue, spinValue } = this.state
+    const { squareSize, spin } = this.state
     return (
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
+        <View style={styles.section} >
+          <Text style={styles.sectionText} >
+              En utilisant l'Animated API de react native, faites la première partie de l'animation de chargement de Slack(les cercles qui tournent et se cognent).
+            </Text>
+        </View>
         <ScrollView style={styles.container}>
           <Animated.View
             style={[styles.animationContainer, {
               transform: [{
-                rotate: spinValue
+                rotate: spin
               }]
-            }]}>
-            <View style={[styles.row]}>
-              <Circle
-                marginBottom={marginValue}
-                marginRight={marginValue}
-                size={CIRCLE_SIZE}
-                color={Colors.iceberg} />
-              <Circle
-                marginBottom={marginValue}
-                marginLeft={marginValue} size={CIRCLE_SIZE}
-                color={Colors.goldenRod} />
-            </View>
-            <View style={[styles.row]}>
-              <Circle
-                marginTop={marginValue}
-                marginRight={marginValue}
-                size={CIRCLE_SIZE}
-                color={Colors.mint} />
-              <Circle
-                marginTop={marginValue}
-                marginLeft={marginValue}
-                size={CIRCLE_SIZE}
-                color={Colors.ruby} />
-            </View>
+            }]} >
+            <CirclesSquare squareSize={squareSize} circleSize={CIRCLE_SIZE} />
           </Animated.View>
         </ScrollView>
         <View style={styles.startButton}>

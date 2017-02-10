@@ -3,19 +3,16 @@
 import { StyleSheet, Dimensions } from 'react-native'
 import { ApplicationStyles } from '../../Themes/'
 import { Metrics } from '../../Themes'
-var { width, height } = Dimensions.get('window')
+var { height } = Dimensions.get('window')
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
   animationContainer: {
-    marginTop: height / 4,
+    marginTop: Metrics.baseMargin,
+    padding: Metrics.baseMargin,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  row: {
-    flex: 1,
-    flexDirection: 'row'
   },
   startButton: {
     position: 'absolute',
