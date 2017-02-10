@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
 import { Actions as NavigationActions } from 'react-native-router-flux'
+import Quote from '../Components/Quote'
 
 // Styles
 import styles from './Styles/ReactComponentScreenStyle'
@@ -35,6 +36,7 @@ class ReactComponentScreen extends React.Component {
               Ce component sera utilisé dans le prochain exemple, mais vous pouvez l'essayer ici en lui passant this.handleYourComponentPress comme callback.
             </Text>
         </View>
+        <Quote quote={'hello world'} color={'blue'} onPress={this.handleYourComponentPress} />
         <Text style={styles.counter}>Quote press count: {this.state.pressCount.toString()}</Text>
       </ScrollView>
     )
