@@ -1,21 +1,42 @@
 import test from 'ava'
-import Actions, { reducer, INITIAL_STATE } from '../../App/Redux/QuotesRedux'
+import Actions, { reducer, CurrentQuoteSelector, ListViewAuthorsSelector, INITIAL_STATE } from '../../App/Redux/QuotesRedux'
+import Immutable from 'seamless-immutable'
 
-test('attempt', t => {
-  const state = reducer(INITIAL_STATE, Actions.quotesRequest('data'))
-
-  t.true(state.fetching)
+test('search', t => {
+  const expectedSearchTerm = 'searchTerm'
+  const state = reducer(INITIAL_STATE, Actions.search(expectedSearchTerm))
+  t.is(expectedSearchTerm, state.searchTerm)
 })
 
-test('success', t => {
-  const state = reducer(INITIAL_STATE, Actions.quotesSuccess('hi'))
-
-  t.is(state.payload, 'hi')
+test('cancelSearch', t => {
+  const initialState = Immutable({ searchTerm: 'searchTerm' })
+  const state = reducer(initialState, Actions.cancelSearch())
+  t.is('', state.searchTerm)
 })
 
-test('failure', t => {
-  const state = reducer(INITIAL_STATE, Actions.quotesFailure(99))
+test('CurrentQuoteSelector', t => {
+  const firstAuthorName = INITIAL_STATE.authors[0].name
+  const authorQuoteIndex = INITIAL_STATE.authors[0].quoteIndex
+  const actualQuote = CurrentQuoteSelector(INITIAL_STATE, firstAuthorName).quote
+  const expectedQuote = INITIAL_STATE.authors[0].quotes[authorQuoteIndex]
+  t.is(expectedQuote, actualQuote)
+})
 
-  t.false(state.fetching)
-  t.true(state.error)
+test('ListViewAuthorsSelector', t => {
+  const firstAuthorName = INITIAL_STATE.authors[0].name
+  const firstAuthorQuoteCount = 3
+  const firstAuthorQuoteIndex = INITIAL_STATE.authors[0].quoteIndex
+  const firstAuthorColor = INITIAL_STATE.authors[0].color
+
+  let initialState = Immutable({
+    ...INITIAL_STATE,
+    searchTerm: firstAuthorName
+  })
+
+  const actualAuthors = ListViewAuthorsSelector(initialState)
+  t.is(1, actualAuthors.length)
+  t.is(firstAuthorName, actualAuthors[0].name)
+  t.is(firstAuthorColor, actualAuthors[0].color)
+  t.is(firstAuthorQuoteIndex, actualAuthors[0].quoteIndex)
+  t.is(firstAuthorQuoteCount, actualAuthors[0].quoteCount)
 })

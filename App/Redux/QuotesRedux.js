@@ -19,6 +19,7 @@ export const INITIAL_STATE = Immutable(InitialState)
 /* ------------- Reducers ------------- */
 
 export const incrementQuoteIndex = (state: Object, authorName: string) => {
+  /* À COMPLÉTER */
   return state
 }
 
@@ -45,6 +46,7 @@ export const reducer = createReducer(INITIAL_STATE, {
 })
 
 /* ------------- Selectors ----------------------------- */
+
 const searchAuthors = (state:Object) =>
 state.authors.filter((currentAuthor) => {
   const author = currentAuthor.name.toLowerCase()
