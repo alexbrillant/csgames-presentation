@@ -18,33 +18,12 @@ class LayoutAnimationScreen extends React.Component {
     this.animate = this.animate.bind(this)
     this.state = {}
     this.state.animation1 = new Animated.Value(0)
-    this.state.squareSize = this.state.animation1.interpolate({
-      inputRange: [0, 1],
-      outputRange: [INITIAL_SQUARE_SIZE, 0]
-    })
-    this.state.spin = this.state.animation1.interpolate({
-      inputRange: [0, 1],
-      outputRange: ['0deg', '360deg']
-    })
+    this.state.squareSize = INITIAL_SQUARE_SIZE
+    this.state.spin = '0deg'
   }
 
   animate () {
-    Animated.sequence([
-      Animated.timing(
-        this.state.animation1, {
-          toValue: 1,
-          duration: MARGIN_AND_SPIN_DURATION,
-          easing: Easing.cubic
-        }
-      ),
-      Animated.timing(
-        this.state.animation1, {
-          toValue: 0,
-          duration: MARGIN_AND_SPIN_DURATION,
-          easing: Easing.elastic(1)
-        }
-      )
-    ]).start()
+    /* À COMPLÉTER */
   }
 
   render () {
