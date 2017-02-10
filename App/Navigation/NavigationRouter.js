@@ -22,6 +22,7 @@ import APITestingScreen from '../Containers/APITestingScreen'
 import ThemeScreen from '../Containers/ThemeScreen'
 import DeviceInfoScreen from '../Containers/DeviceInfoScreen'
 import LayoutAnimationScreen from '../Containers/LayoutAnimationScreen'
+import ReactComponentScreen from '../Containers/ReactComponentScreen'
 import ReduxSagaScreen from '../Containers/ReduxSagaScreen'
 import ListviewAuthors from '../Containers/ListViewAuthors'
 
@@ -49,6 +50,7 @@ class NavigationRouter extends Component {
             <Scene key='layoutAnimation' component={LayoutAnimationScreen} title='Layout Animation' />
             <Scene key='reduxSaga' component={ReduxSagaScreen} title='Redux Saga' />
             <Scene key='reduxReducer' component={ListviewAuthors} title='Redux reducer' navBar={QuotesNavBar} />
+            <Scene key='reactComponent' component={ReactComponentScreen} title='React component' />
 
             {/* Custom navigation bar example */}
             <Scene key='deviceInfo' component={DeviceInfoScreen} title='Device Info' />

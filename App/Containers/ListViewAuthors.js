@@ -23,11 +23,28 @@ class ListViewAuthors extends React.Component {
       dataSource: ds.cloneWithRows(this.props.authors)
     }
     this.renderRow = this.renderRow.bind(this)
+    this.handleOnPressRow = this.handleOnPressRow.bind(this)
+  }
+
+  handleOnPressRow (author: string) {
+    return ''
+  }
+
+  renderHeader () {
+    return (
+      <View style={styles.section} >
+        <Text style={styles.sectionText} >
+          Implémentez et testez le reducer incrementQuoteIndex dans Redux/QuotesRedux.js{'\n'}{'\n'}
+          Attacher ce reducer au bon endroit dans cet écran(Containers/ListViewAuthor.js).{'\n'}{'\n'}
+          Ensuite, passez l'action du reducer au callback de votre component et faites une transition vers un nouvel écran pour faire défiler les citations des auteurs. Vous pouvez utiliser les selectors existants.
+        </Text>
+      </View>
+    )
   }
 
   renderRow (author) {
     return (
-      <View style={[styles.row, {backgroundColor: author.color}]}>
+      <View onPress={() => this.handleOnPressRow(author.name)} style={[styles.row, {backgroundColor: author.color}]}>
         <Text style={styles.boldLabel}>{author.name}</Text>
         <Text style={styles.label}>{author.quoteCount} quotes</Text>
       </View>
@@ -55,6 +72,7 @@ class ListViewAuthors extends React.Component {
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}
           renderFooter={this.renderFooter}
+          renderHeader={this.renderHeader}
           enableEmptySections
           pageSize={15}
         />
