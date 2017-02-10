@@ -6,6 +6,7 @@ import Styles from './Styles/NavigationContainerStyle'
 import NavigationDrawer from './NavigationDrawer'
 import NavItems from './NavItems'
 import CustomNavBar from '../Navigation/CustomNavBar'
+import QuotesNavBar from '../Navigation/QuotesNavBar'
 
 // screens identified by the router
 import PresentationScreen from '../Containers/PresentationScreen'
@@ -22,6 +23,7 @@ import ThemeScreen from '../Containers/ThemeScreen'
 import DeviceInfoScreen from '../Containers/DeviceInfoScreen'
 import LayoutAnimationScreen from '../Containers/LayoutAnimationScreen'
 import ReduxSagaScreen from '../Containers/ReduxSagaScreen'
+import ListviewAuthors from '../Containers/ListViewAuthors'
 
 /* **************************
 * Documentation: https://github.com/aksonov/react-native-router-flux
@@ -46,6 +48,7 @@ class NavigationRouter extends Component {
             <Scene key='theme' component={ThemeScreen} title='Theme' />
             <Scene key='layoutAnimation' component={LayoutAnimationScreen} title='Layout Animation' />
             <Scene key='reduxSaga' component={ReduxSagaScreen} title='Redux Saga' />
+            <Scene key='reduxReducer' component={ListviewAuthors} title='Redux reducer' navBar={QuotesNavBar} />
 
             {/* Custom navigation bar example */}
             <Scene key='deviceInfo' component={DeviceInfoScreen} title='Device Info' />

@@ -32,7 +32,7 @@ export default class PresentationScreen extends React.Component {
             React Component
           </RoundedButton>
 
-          <RoundedButton onPress={NavigationActions.componentExamples}>
+          <RoundedButton onPress={NavigationActions.reduxReducer}>
             Redux Reducer
           </RoundedButton>
 
