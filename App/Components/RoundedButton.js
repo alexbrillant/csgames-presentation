@@ -4,6 +4,7 @@ import React from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 import styles from './Styles/RoundedButtonStyle'
 import ExamplesRegistry from '../Services/ExamplesRegistry'
+import { Colors } from '../Themes'
 
 // Example
 ExamplesRegistry.add('Rounded Button', () =>
@@ -15,6 +16,7 @@ ExamplesRegistry.add('Rounded Button', () =>
 
 type RoundedButtonProps = {
   onPress: () => void,
+  color?: string,
   text?: string,
   children?: string,
   navigator?: Object
@@ -29,9 +31,15 @@ export default class RoundedButton extends React.Component {
   }
 
   render () {
+    var buttonStyle = styles.button
+    if (this.props.color) {
+      buttonStyle = [styles.button, {backgroundColor: this.props.color}]
+    }
     return (
-      <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-        <Text style={styles.buttonText}>{this.getText()}</Text>
+      <TouchableOpacity style={buttonStyle} onPress={this.props.onPress}>
+        <Text style={styles.buttonText}>
+          {this.getText()}
+        </Text>
       </TouchableOpacity>
     )
   }

@@ -54,10 +54,11 @@ class LayoutAnimationScreen extends React.Component {
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <View style={styles.section} >
           <Text style={styles.sectionText} >
-              En utilisant l'Animated API de react native, faites la première partie de l'animation de chargement de Slack(les cercles qui tournent et se cognent).
+              Créez la première partie de l'animation de Slack(les cercles qui tournent et se cognent) en utilisant l'Animated API de react native!
             </Text>
         </View>
         <ScrollView style={styles.container}>
+
           <Animated.View
             style={[styles.animationContainer, {
               transform: [{
@@ -66,6 +67,7 @@ class LayoutAnimationScreen extends React.Component {
             }]} >
             <CirclesSquare squareSize={squareSize} circleSize={CIRCLE_SIZE} />
           </Animated.View>
+
         </ScrollView>
         <View style={styles.startButton}>
           <RoundedButton onPress={this.animate}>

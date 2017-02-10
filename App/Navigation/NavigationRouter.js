@@ -21,6 +21,7 @@ import APITestingScreen from '../Containers/APITestingScreen'
 import ThemeScreen from '../Containers/ThemeScreen'
 import DeviceInfoScreen from '../Containers/DeviceInfoScreen'
 import LayoutAnimationScreen from '../Containers/LayoutAnimationScreen'
+import ReduxSagaScreen from '../Containers/ReduxSagaScreen'
 
 /* **************************
 * Documentation: https://github.com/aksonov/react-native-router-flux
@@ -44,6 +45,7 @@ class NavigationRouter extends Component {
             <Scene key='apiTesting' component={APITestingScreen} title='API Testing' />
             <Scene key='theme' component={ThemeScreen} title='Theme' />
             <Scene key='layoutAnimation' component={LayoutAnimationScreen} title='Layout Animation' />
+            <Scene key='reduxSaga' component={ReduxSagaScreen} title='Redux Saga' />
 
             {/* Custom navigation bar example */}
             <Scene key='deviceInfo' component={DeviceInfoScreen} title='Device Info' />

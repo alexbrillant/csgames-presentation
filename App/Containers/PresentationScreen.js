@@ -36,7 +36,7 @@ export default class PresentationScreen extends React.Component {
             Redux Reducer
           </RoundedButton>
 
-          <RoundedButton onPress={NavigationActions.apiTesting}>
+          <RoundedButton onPress={NavigationActions.reduxSaga}>
             Redux Saga
           </RoundedButton>
 
