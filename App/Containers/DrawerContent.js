@@ -24,40 +24,34 @@ class DrawerContent extends Component {
 
   handlePressComponents = () => {
     this.toggleDrawer()
-    NavigationActions.componentExamples()
+    NavigationActions.reactComponent()
   }
 
-  handlePressUsage = () => {
+  handlePressReducer = () => {
     this.toggleDrawer()
-    NavigationActions.usageExamples()
+    NavigationActions.reduxReducer()
   }
 
-  handlePressAPI = () => {
+  handlePressReduxSaga = () => {
     this.toggleDrawer()
-    NavigationActions.apiTesting()
+    NavigationActions.reduxSaga()
   }
 
-  handlePressTheme = () => {
+  handlePressAnimation = () => {
     this.toggleDrawer()
-    NavigationActions.theme()
-  }
-
-  handlePressDevice = () => {
-    this.toggleDrawer()
-    NavigationActions.deviceInfo()
+    NavigationActions.layoutAnimation()
   }
 
   render () {
     return (
       <ScrollView style={styles.container}>
         <DrawerButton text='REACT COMPONENT' onPress={this.handlePressComponents} />
-        <DrawerButton text='REDUX REDUCERS' onPress={this.handlePressUsage} />
-        <DrawerButton text='REDUX SAGA' onPress={this.handlePressAPI} />
-        <DrawerButton text='LAYOUT ANIMATION' onPress={this.handlePressTheme} />
+        <DrawerButton text='REDUX REDUCERS' onPress={this.handlePressReducer} />
+        <DrawerButton text='REDUX SAGA' onPress={this.handlePressReduxSaga} />
+        <DrawerButton text='LAYOUT ANIMATION' onPress={this.handlePressAnimation} />
       </ScrollView>
     )
   }
-
 }
 
 DrawerContent.contextTypes = {
