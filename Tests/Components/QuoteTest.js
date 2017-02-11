@@ -13,9 +13,10 @@ test('component exists', t => {
 })
 
 test('component structure', t => {
-  t.is(wrapper.name(), 'View')
+  t.is(wrapper.name(), 'TouchableWithoutFeedback')
   t.is(wrapper.children().length, 1)
-  t.is(wrapper.children().first().name(), 'Text')
+  t.is(wrapper.children().first().name(), 'View')
+  t.is(wrapper.children().first().children().first().name(), 'Text')
 })
 
 test('onPress', (t) => {

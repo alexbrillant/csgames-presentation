@@ -26,13 +26,6 @@ class ReduxSagaScreen extends React.Component {
       <View style={styles.mainContainer}>
         <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
         <ScrollView style={styles.container}>
-          <View style={styles.section} >
-            <Text style={styles.sectionText}>
-              En utilisant redux-saga, incrémenter le compteur après une second du dernier clique du bouton Increment Async.{'\n'} {'\n'}
-              La propriété incrementing de ReduxSagaScreen doit être à vrai seulement quand on est en train d'incrémenter de façon asynchrone.{'\n'}{'\n'}
-              Il y a seulement le saga à faire : App/Sagas/CounterSagas.js
-            </Text>
-          </View>
           <Text style={styles.counter}>
             {counter}
           </Text>

@@ -1,12 +1,13 @@
 // @flow
 
 import React from 'react'
-import { View, Text, ListView } from 'react-native'
+import { View, Text, ListView, TouchableWithoutFeedback } from 'react-native'
 import { connect } from 'react-redux'
 // import { Actions as NavigationActions } from 'react-native-router-flux'
 import { ListViewAuthorsSelector } from '../Redux/QuotesRedux'
 import AlertMessage from '../Components/AlertMessage'
 import styles from './Styles/ListViewAuthorsStyle'
+import { Actions as NavigationActions } from 'react-native-router-flux'
 
 class ListViewAuthors extends React.Component {
 
@@ -26,27 +27,19 @@ class ListViewAuthors extends React.Component {
   }
 
   handleOnPressRow (author: string) {
-    return ''
-  }
-
-  renderHeader () {
-    return (
-      <View style={styles.section} >
-        <Text style={styles.sectionText} >
-          Implémentez et testez le reducer incrementQuoteIndex dans Redux/QuotesRedux.js{'\n'}{'\n'}
-          Attacher ce reducer au bon endroit dans cet écran(Containers/ListViewAuthor.js).{'\n'}{'\n'}
-          Ensuite, passez l'action du reducer, la couleur, et le nom de au component de l'exemple précédant.{'\n'}{'\n'} Dans un nouvel écran(ignite generate containers QuoteScreen.js), faites défiler les citations de l'auteur sélectionné.
-        </Text>
-      </View>
-    )
+    NavigationActions.quote({
+      authorName: author
+    })
   }
 
   renderRow (author) {
     return (
-      <View onPress={() => this.handleOnPressRow(author.name)} style={[styles.row, {backgroundColor: author.color}]}>
-        <Text style={styles.boldLabel}>{author.name}</Text>
-        <Text style={styles.label}>{author.quoteCount} quotes</Text>
-      </View>
+      <TouchableWithoutFeedback onPress={() => this.handleOnPressRow(author.name)}>
+        <View style={[styles.row, {backgroundColor: author.color}]}>
+          <Text style={styles.boldLabel}>{author.name}</Text>
+          <Text style={styles.label}>{author.quoteCount} quotes</Text>
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
 
@@ -70,8 +63,6 @@ class ListViewAuthors extends React.Component {
           contentContainerStyle={styles.listContent}
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}
-          renderFooter={this.renderFooter}
-          renderHeader={this.renderHeader}
           enableEmptySections
           pageSize={15}
         />

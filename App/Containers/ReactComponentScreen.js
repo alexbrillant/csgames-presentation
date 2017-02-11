@@ -1,9 +1,11 @@
 // @flow
 
 import React from 'react'
-import { ScrollView, Text, View } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import { connect } from 'react-redux'
 import styles from './Styles/ReactComponentScreenStyle'
+import Quote from '../Components/Quote'
+import { Colors } from '../Themes'
 
 class ReactComponentScreen extends React.Component {
 
@@ -21,15 +23,11 @@ class ReactComponentScreen extends React.Component {
   render () {
     return (
       <ScrollView style={styles.container}>
-        <View style={styles.section} >
-          <Text style={styles.sectionText} >
-              Implémentez un React Component nommé Quote qui prend une citation(string),
-              une couleur(string) et un callback en paramètres(props). {'\n'}{'\n'}
-              Le callback est déclanché lorsqu'on appuie n'importe où sur le component. {'\n'}{'\n'}
-              Il faut aussi faire des tests avec enzyme(voir les exemples dans Tests/Components).{'\n'}{'\n'}
-              Ce component sera utilisé dans le prochain exemple, mais vous pouvez l'essayer ici en lui passant this.handleYourComponentPress comme callback.
-            </Text>
-        </View>
+        <Quote color={Colors.pacificBlue}
+          onPress={() => {
+            this.setState({ pressCount: this.state.pressCount + 1 })
+          }}
+          quote={'Work hard, be kind, and amazing things will happen.'} />
         <Text style={styles.counter}>Quote press count: {this.state.pressCount.toString()}</Text>
       </ScrollView>
     )

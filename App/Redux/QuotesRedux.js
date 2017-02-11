@@ -89,8 +89,9 @@ export const ListViewAuthorsSelector = (state:Object) => {
 
 export const CurrentQuoteSelector = (state:Object, authorName:string) => {
   const author = state.authors.find((author) => author.name === authorName)
-  const { quotes, quoteIndex } = author
+  const { quotes, quoteIndex, color } = author
   return {
-    quote: quotes[quoteIndex]
+    quote: quotes[quoteIndex],
+    color: color
   }
 }

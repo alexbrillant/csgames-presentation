@@ -25,6 +25,7 @@ import LayoutAnimationScreen from '../Containers/LayoutAnimationScreen'
 import ReactComponentScreen from '../Containers/ReactComponentScreen'
 import ReduxSagaScreen from '../Containers/ReduxSagaScreen'
 import ListviewAuthors from '../Containers/ListViewAuthors'
+import QuoteScreen from '../Containers/QuoteScreen'
 
 /* **************************
 * Documentation: https://github.com/aksonov/react-native-router-flux
@@ -51,6 +52,7 @@ class NavigationRouter extends Component {
             <Scene key='reduxSaga' component={ReduxSagaScreen} title='Redux Saga' />
             <Scene key='reduxReducer' component={ListviewAuthors} title='Redux reducer' navBar={QuotesNavBar} />
             <Scene key='reactComponent' component={ReactComponentScreen} title='React component' />
+            <Scene key='quote' component={QuoteScreen} title='Quote Screen' />
 
             {/* Custom navigation bar example */}
             <Scene key='deviceInfo' component={DeviceInfoScreen} title='Device Info' />
