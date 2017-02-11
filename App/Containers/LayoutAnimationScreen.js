@@ -6,7 +6,6 @@ import RoundedButton from '../Components/RoundedButton'
 import CirclesSquare from '../Components/CirclesSquare'
 import { Images } from '../Themes'
 
-// Styles
 import styles from './Styles/LayoutAnimationScreenStyle'
 const CIRCLE_SIZE = 35
 const INITIAL_SQUARE_SIZE = 50
@@ -22,7 +21,7 @@ class LayoutAnimationScreen extends React.Component {
       inputRange: [0, 1],
       outputRange: [INITIAL_SQUARE_SIZE, 0]
     })
-    this.state.spin = this.state.animation1.interpolate({
+    this.state.spinValue = this.state.animation1.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '360deg']
     })
@@ -58,7 +57,6 @@ class LayoutAnimationScreen extends React.Component {
             </Text>
         </View>
         <ScrollView style={styles.container}>
-
           <Animated.View
             style={[styles.animationContainer, {
               transform: [{
@@ -67,7 +65,6 @@ class LayoutAnimationScreen extends React.Component {
             }]} >
             <CirclesSquare squareSize={squareSize} circleSize={CIRCLE_SIZE} />
           </Animated.View>
-
         </ScrollView>
         <View style={styles.startButton}>
           <RoundedButton onPress={this.animate}>
