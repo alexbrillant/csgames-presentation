@@ -4,7 +4,6 @@ import React from 'react'
 import { TouchableOpacity, Text } from 'react-native'
 import styles from './Styles/RoundedButtonStyle'
 import ExamplesRegistry from '../Services/ExamplesRegistry'
-import { Colors } from '../Themes'
 
 // Example
 ExamplesRegistry.add('Rounded Button', () =>

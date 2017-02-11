@@ -5,7 +5,6 @@ import { ScrollView, Text, View } from 'react-native'
 import { connect } from 'react-redux'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
-import { Actions as NavigationActions } from 'react-native-router-flux'
 import Quote from '../Components/Quote'
 
 // Styles

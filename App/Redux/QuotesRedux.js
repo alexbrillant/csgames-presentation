@@ -18,9 +18,30 @@ export const INITIAL_STATE = Immutable(InitialState)
 
 /* ------------- Reducers ------------- */
 
-export const incrementQuoteIndex = (state: Object, authorName: string) => {
-  /* À COMPLÉTER */
-  return state
+export const incrementQuoteIndex = (state: Object, { authorName }: Object) => {
+  return {
+    ...state,
+    authors: incrementAuthorQuoteIndex(state.authors, authorName)
+  }
+}
+
+const incrementAuthorQuoteIndex = (state: Object, authorName: string) => {
+  return state.map(author => {
+    if (author.name !== authorName) {
+      return author
+    }
+    let newQuoteIndex = author.quoteIndex + 1
+    let allQuotesRead = author.allQuotesRead
+    if (newQuoteIndex === author.quotes.length) {
+      allQuotesRead = true
+      newQuoteIndex = 0
+    }
+    return {
+      ...author,
+      quoteIndex: newQuoteIndex,
+      allQuotesRead: allQuotesRead
+    }
+  })
 }
 
 export const search = (state: Object, { searchTerm }: Object) => {

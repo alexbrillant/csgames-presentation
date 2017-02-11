@@ -4,9 +4,8 @@ import React from 'react'
 import { View, Text, ListView } from 'react-native'
 import { connect } from 'react-redux'
 // import { Actions as NavigationActions } from 'react-native-router-flux'
-import QuoteActions, { ListViewAuthorsSelector } from '../Redux/QuotesRedux'
+import { ListViewAuthorsSelector } from '../Redux/QuotesRedux'
 import AlertMessage from '../Components/AlertMessage'
-import SearchBar from '../Components/SearchBar'
 import styles from './Styles/ListViewAuthorsStyle'
 
 class ListViewAuthors extends React.Component {
